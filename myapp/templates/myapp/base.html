@@ -21,11 +21,11 @@
       <h1 class="logo">Yellow Crumble</h1>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="nav-item"><a href="home.html">Home</a></li>
-          <li class="nav-item"><a href="about.html">About Us</a></li>
-          <li class="nav-item"><a href="index.html">Menu</a></li>
-          <li class="nav-item"><a href="contact.html">Contact</a></li>
-          <li class="nav-item"><a href="login.html">Log in</a></li>
+          <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a href="{% url 'about' %}">About Us</a></li>
+          <li class="nav-item"><a href="{% url 'index' %}">Menu</a></li>
+          <li class="nav-item"><a href="{% url 'contact' %}">Contact</a></li>
+          <li class="nav-item"><a href="{% url 'login' %}">Log in</a></li>
         </ul>
       </nav>
     </div>
@@ -58,10 +58,10 @@
       <div class="footer-column">
         <p class="footer-column-title">Explore</p>
         <ul>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="faq.html">FAQs</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'faq' %}">FAQs</a></li>
+          <li><a href="{% url 'careers' %}">Careers</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
         </ul>
       </div>
 
