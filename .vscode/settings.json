@@ -1,0 +1,14 @@
+{
+    "python.testing.unittestEnabled": true,
+    "python.testing.unittestArgs": [],
+    "python.experiments.optInto": [
+        "pythonTestAdapter"
+    ],
+    "python-envs.pythonProjects": [
+        {
+            "path": ".",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ]
+}

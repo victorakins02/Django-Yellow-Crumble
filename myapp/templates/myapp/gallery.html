@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Gallery | Yellow Crumble
+{% endblock %}
+
+{% block extra_styles %}
+  <!-- Gallery page specific styles -->
+  <link rel="stylesheet" href="{% static 'myapp/Styles/gallery.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/home_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <p class="page-banner-eyebrow">A feast for the eyes</p>
+      <h2 class="page-banner-title">Our Gallery</h2>
+      <p class="page-banner-sub">
+        Every dessert tells a story. Browse behind-the-scenes shots,
+        finished creations, and a few things we're particularly proud of.
+      </p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <div class="gallery-inner">
+
+        <!-- Filter tabs -->
+        <nav class="filter-bar" aria-label="Gallery categories">
+          <a href="gallery.html" class="filter-tab active">All</a>
+          <a href="gallery.html" class="filter-tab">Brownies</a>
+          <a href="gallery.html" class="filter-tab">Cakes</a>
+          <a href="gallery.html" class="filter-tab">Pastries</a>
+          <a href="gallery.html" class="filter-tab">The Bakery</a>
+        </nav>
+
+        <!-- Grid -->
+        <div class="gallery-grid">
+
+          <!-- Row 1 -->
+
+          <!-- Item 1 -->
+          <div class="gallery-item gallery-item--tall" id="brownies">
+            <img src="{% static 'myapp/images/image-brownie-desktop.jpg' %}" alt="Chocolate Fudge Brownie close-up">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Brownies</p>
+              <p class="overlay-title">Chocolate Fudge Brownie</p>
+            </div>
+          </div>
+
+          <!-- Item2 -->
+          <div class="gallery-item" id="cakes">
+            <img src="{% static 'myapp/images/image-cake-desktop.jpg' %}" alt="Strawberry Cake">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Cakes</p>
+              <p class="overlay-title">Strawberry Layer Cake</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="gallery-item" id="pastries">
+            <img src="{% static 'myapp/images/image-baklava-desktop.jpg' %}" alt="Walnut Baklava">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Pastries</p>
+              <p class="overlay-title">Walnut Baklava</p>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+
+          <!-- Item 4 -->
+          <div class="gallery-item gallery-item--wide">
+            <img src="{% static 'myapp/images/image-macaron-desktop.jpg' %}" alt="Five Macarons on a plate">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Pastries</p>
+              <p class="overlay-title">Five Macarons — a rainbow of flavours</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="gallery-item">
+            <img src="{% static 'myapp/images/image-meringue-desktop.jpg' %}" alt="Lemon Meringue">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Pastries</p>
+              <p class="overlay-title">Lemon Meringue</p>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+
+          <!-- Item6 -->
+          <div class="gallery-item">
+            <img src="{% static 'myapp/images/image-creme-brulee-desktop.jpg' %}" alt="Creme Brulee">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Desserts</p>
+              <p class="overlay-title">Classic Crème Brûlée</p>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="gallery-item gallery-item--tall" id="bakery">
+            <img src="{% static 'myapp/images/happy-baker-showing-tray-fresh-bread-kitchen-bakery-49289163.webp' %}" alt="Inside the Yellow Crumble kitchen">
+            <div class="gallery-overlay">
+              <p class="overlay-label">The Bakery</p>
+              <p class="overlay-title">Where the magic happens</p>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="gallery-item">
+            <img src="{% static 'myapp/images/image-brownie-desktop.jpg' %}" alt="Brownie batch fresh from the oven">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Brownies</p>
+              <p class="overlay-title">Fresh from the oven</p>
+            </div>
+          </div>
+
+          <!-- Item 9 -->
+          <div class="gallery-item">
+            <img src="{% static 'myapp/images/image-baklava-desktop.jpg' %}" alt="Baklava detail shot">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Pastries</p>
+              <p class="overlay-title">Baklava — layer by layer</p>
+            </div>
+          </div>
+
+          <!-- Item 10 -->
+          <div class="gallery-item">
+            <img src="{% static 'myapp/images/image-macaron-desktop.jpg' %}" alt="Macaron detail">
+            <div class="gallery-overlay">
+              <p class="overlay-label">Pastries</p>
+              <p class="overlay-title">Pastel Macarons</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="gallery-cta">
+          <span class="gallery-cta-icon">🛒</span>
+          <h2>Hungry yet?</h2>
+          <p>Everything you see here is available to order — head to the menu and treat yourself.</p>
+          <a href="index.html" class="btn-primary">View the Menu</a>
+        </div>
+
+      </div>
+    </section>
+{% endblock %}

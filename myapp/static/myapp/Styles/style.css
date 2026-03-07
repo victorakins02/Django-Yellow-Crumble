@@ -1,0 +1,366 @@
+/* Color Palette for Application Theme */
+:root {
+    --red: hsl(14, 86%, 42%);
+    --green: hsl(159, 69%, 38%);
+    --rose50: hsl(20, 50%, 98%);
+    --rose100: hsl(13, 31%, 94%);
+    --rose300: hsl(14, 25%, 72%);
+    --rose400: hsl(7, 20%, 60%);
+    --rose500: hsl(12, 20%, 44%);
+    --rose900: hsl(14, 65%, 9%);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+    --gray: hsl(0, 0%, 38%);
+    --lt-gray: hsl(0, 0%, 84%);
+    --font-size: 16px;
+    --spacing: 1rem;
+}
+
+/* Box Sizing for All Elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Header Background & Border */
+.header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--rose100);
+    width: 100%;
+}
+
+/* Logo Styling */
+.logo {
+    /* font-family: 'Pacifico', cursive; */
+    font-size: 1.5rem;
+    color: var(--rose900);
+    margin: 0;
+    font-weight: 700;
+}
+
+/* Navigation List Layout */
+.nav-list {
+    list-style: none; /* Removes bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem; /* Spacing between links */
+}
+
+/* Navigation Link Styling */
+.nav-item a {
+    text-decoration: none;
+    color: var(--rose500);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+    color: var(--red); /* Uses theme red on hover */
+}
+
+
+/* Adds spacing around the main content area */
+.main {
+    margin: 2rem 0;
+}
+
+/* Global Styles across the Body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Red Hat Text', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 100%;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--rose50);
+    color: var(--black);
+}
+
+/* Image Sizing */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Align items container */
+.inner-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1rem;
+}
+
+/* Styling for the sidebar content */
+.sidewrap {
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+/* Centering the SVG and text in the sidebar */
+.sidewrap svg {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Styling for the text in the sidebar */
+.sidewrap p {
+    color: var(--rose500);
+    text-align: center;
+}
+/* Main body layout takes 2/3 width, sidebar 1/3 width */
+.grid {
+    flex: 2; /* Takes up 2 parts of the space */
+    min-width: 0;
+}
+/* Sidebar layout */
+.sidebar {
+    flex: 1; /* Takes up 1 part of the space */
+    min-width: 300px;
+    margin-top: 10.5rem; /* Adjusts the top margin to align with the main content. Will likely chnage later */
+}
+
+/* Main header styling */
+.main-header {
+    /* font-family: 'Pacifico', cursive; */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+    text-align: center;
+}
+
+/* Secondary header styling */
+.second-header {
+    /* font-family: 'Pacifico', cursive; */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--red);
+    text-align: center;
+}
+
+/* Grid layout for the main content */
+.grid-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start; /* Changed from space-between */
+    align-items: stretch;
+    gap: 1rem; 
+}
+
+/* Each grid item takes up 1/3 of the width with spacing */
+.grid-item {
+    flex: 0 0 calc(33.333% - 0.67rem); /* More precise for 3-column layouts with 1rem gaps */
+    margin-bottom: 2rem;
+}
+
+/* Image box to maintain aspect ratio and ensure images fit nicely */
+.image-box {
+    margin: 0;
+    height: 0;
+    position: relative;
+    padding-bottom: 100%; /* Maintains a square aspect ratio */
+    width: 100%;
+}
+
+/* Ensures images cover the box without distortion and have rounded corners */
+.image-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the box without distortion */
+    border-radius: 10px; /* adds rounded corners to the images */
+}
+
+
+.category-section {
+    width: 100%;
+    margin-bottom: 4rem; 
+}
+
+/* Individual Category Titles */
+.category-title {
+    font-size: 2rem;
+    color: var(--rose900);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--rose100); 
+    text-transform: capitalize;
+}
+
+/* Footer styling */
+footer {
+    width: 100%;
+    padding: 2rem 0; /* Adds space above and below the text */
+    text-align: center;
+    background-color: var(--rose100); /* Optional: matches your theme */
+}
+
+/* Footer text styling */
+footer p {
+    margin: 0; /* Removes default browser spacing */
+    color: var(--rose900); /* Optional: matches your theme */
+}
+
+/* Styling for the "Add to Cart" button */
+.add-to-cart-button {
+    position: absolute;
+    bottom: -1rem; /* Adjusts the position below the image */
+    left: 50%;
+    background-color: var(--rose100);
+    appearance: none;
+    transform: translateX(-50%);
+    white-space: nowrap; /* Prevents the text from wrapping */
+    flex-flow:  row nowrap; /* Keeps the button content in a single line */
+    justify-content: space-evenly; /* Distributes space evenly between items in the button */
+    align-items: center; /* Vertically centers the content */
+    border: 1px solid var(--rose900);
+    display: flex;
+    min-width: 150px; /* Ensures the button has a minimum width */
+    border-radius: 50vh;
+    padding: 0.5rem 1rem;
+    color: var(--rose900);
+    text-decoration: none;
+    cursor: pointer;
+
+    /* Transition for smooth hover effect */
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: var(--red);
+        color: var(--red);
+    }
+}
+/* Container for the button to ensure it doesn't overlap with other content */
+.button-container {
+    position: relative;
+    margin-bottom: 2rem; /* Adds space below the button container */
+}
+/* Styling for the third header, which is used for item names or descriptions */
+.third-header {
+    padding: 0.5rem 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--rose900);
+}
+
+/* Styling for the item price, making it bold and red to stand out */
+.item-price {
+    font-weight: 600;
+    color: var(--red);
+}
+
+/* Styling for the item type, making it smaller and adding color */
+.item-type {
+    font-size: 0.875rem;
+    color: var(--rose500);
+}
+
+/* Footer Logic */
+.footer {
+  background-color: var(--rose900);
+  color: var(--rose300);
+  padding: 3rem 1rem 1.5rem;
+}
+
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2.5rem;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid hsl(14, 30%, 18%);
+}
+
+.footer-brand {
+  flex: 1 1 220px;
+}
+
+.footer-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 0.75rem;
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  color: var(--rose400);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-column {
+  flex: 1 1 130px;
+}
+
+.footer-column-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0 0 1rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-column ul li a {
+  color: var(--rose400);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-column ul li a:hover {
+  color: var(--white);
+}
+
+.footer-bottom {
+  max-width: 1140px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-copyright {
+  font-size: 0.8125rem;
+  color: var(--rose500);
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-legal a {
+  font-size: 0.8125rem;
+  color: var(--rose500);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+  color: var(--white);
+}

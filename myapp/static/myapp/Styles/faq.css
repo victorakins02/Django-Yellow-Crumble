@@ -1,0 +1,213 @@
+/*
+   FAQ PAGE – additional styles only
+   Shared tokens come from style.css
+   */
+
+.page-banner {
+  background-color: var(--rose100);
+  padding: 4rem 1rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%,
+    hsl(14, 86%, 92%) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-banner-top {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 0.75rem;
+  position: relative;
+}
+
+.page-banner-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--rose900);
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  position: relative;
+}
+
+.page-banner-sub {
+  color: var(--rose500);
+  font-size: 1.0625rem;
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+}
+
+/*  FAQ section layout  */
+.faq-section {
+  padding: 5rem 1rem;
+}
+
+.faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/*  Category label  */
+.faq-category-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 3rem 0 1rem;
+}
+
+.faq-category-title:first-of-type {
+  margin-top: 0;
+}
+
+/*  Accordion using <details> / <summary>  */
+
+/* Remove default browser triangle */
+details {
+  border-bottom: 1px solid var(--rose100);
+}
+
+details:first-of-type {
+  border-top: 1px solid var(--rose100);
+}
+
+summary {
+  list-style: none; /* Firefox */
+}
+
+summary::-webkit-details-marker {
+  display: none; /* Chrome / Safari */
+}
+
+/* The clickable question row */
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--rose900);
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+summary:hover {
+  color: var(--red);
+}
+
+/* Custom +/– icon using the ::after pseudo-element */
+summary::after {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--rose100);
+  /* Plus sign drawn with a gradient cross */
+  background-image:
+    linear-gradient(var(--red), var(--red)),
+    linear-gradient(var(--red), var(--red));
+  background-size: 2px 10px, 10px 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-color 0.2s ease, transform 0.3s ease;
+}
+
+/* When open: red background, icon rotates to × */
+details[open] summary {
+  color: var(--red);
+}
+
+details[open] summary::after {
+  background-color: var(--red);
+  background-image:
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white));
+  transform: rotate(45deg);
+}
+
+/* The answer panel */
+.faq-answer {
+  padding: 0 0 1.5rem;
+  color: var(--rose500);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.faq-answer a {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.faq-answer a:hover {
+  text-decoration: underline;
+}
+
+/*  Still have questions CTA  */
+.faq-cta {
+  background-color: var(--rose100);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.faq-cta-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.faq-cta h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--rose900);
+  margin: 0 0 0.5rem;
+}
+
+.faq-cta p {
+  color: var(--rose500);
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: hsl(14, 86%, 35%);
+  transform: translateY(-2px);
+}
+

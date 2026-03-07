@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Careers | Yellow Crumble
+{% endblock %}
+
+{% block extra_styles %}
+  <!-- FAQ page specific styles -->
+  <link rel="stylesheet" href="{% static 'myapp/Styles/faq.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/home_style.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/Styles/careers.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- Open Roles -->
+    <section class="jobs-section">
+      <div class="jobs-inner">
+
+        <p class="section-label" style="text-align:left; margin-bottom: 0.25rem;">Now Hiring</p>
+        <h2 class="section-title" style="text-align:left; margin-left:0; margin-bottom: 2.5rem;">Open Positions</h2>
+        {% for career in careers %}
+        <article class="job-card">
+          <div class="job-icon-wrap">{{ career.job_emoji }}</div>
+          <div class="job-details">
+            <h3 class="job-title">{{ career.title }}</h3>
+            <div class="job-meta">
+              <span class="job-tag job-tag--highlight">{{ career.time }}</span>
+              <span class="job-tag">{{ career.location }}</span>
+              <span class="job-tag">{{ career.salary }}</span>
+            </div>
+            <p class="job-desc">
+              {{ career.description }}
+            </p>
+          </div>
+          <div class="job-action">
+            <a href="contact.html" class="btn-apply">Apply Now →</a>
+          </div>
+        </article>
+    {% endfor %}
+
+        <!-- Speculative applications CTA -->
+        <div class="careers-cta">
+          <span class="careers-cta-icon">📩</span>
+          <h2>Don't see a role that fits?</h2>
+          <p>We're always on the lookout for great people. Send us your CV and a short note about yourself. We'll keep it on file for when something comes up.</p>
+          <a href="contact.html" class="btn-primary">Get in Touch</a>
+        </div>
+
+      </div>
+    </section>
+{% endblock %}

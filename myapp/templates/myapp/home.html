@@ -1,0 +1,127 @@
+{% extends "base.html" %} 
+
+{% block title %}Home - Yellow Crumble{% endblock %}
+
+{% block extra_styles %}
+  <!-- Home page specific styles -->
+  <link rel="stylesheet" href="../static/myapp/Styles/home_style.css">
+  <link rel="stylesheet" href="../static/myapp/Styles/faq.css">
+  <link rel="stylesheet" href="../static/myapp/Styles/footer.css">
+{% endblock %}
+
+{% block content %}
+<!-- Welcome section -->
+    <section class="crumble">
+      <p class="crumble-top">Baked fresh every morning</p>
+      <h2 class="crumble-header">
+        Life is <span>sweeter</span><br>with every crumble
+      </h2>
+      <p class="crumble-sub">
+        Handcrafted desserts made from scratch. Favourites such as brownies, macarons, baklava,
+        and more, ready to brighten your day.
+      </p>
+      <div class="crumble-actions">
+        <a href="index.html" class="primary-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 21 20"><g fill="currentColor" clip-path="url(#a)"><path d="M6.583 18.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5ZM15.334 18.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5ZM3.446 1.752a.625.625 0 0 0-.613-.502h-2.5V2.5h1.988l2.4 11.998a.625.625 0 0 0 .612.502h11.25v-1.25H5.847l-.5-2.5h11.238a.625.625 0 0 0 .61-.49l1.417-6.385h-1.28L16.083 10H5.096l-1.65-8.248Z"/><path d="M11.584 3.75v-2.5h-1.25v2.5h-2.5V5h2.5v2.5h1.25V5h2.5V3.75h-2.5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M.333 0h20v20h-20z"/></clipPath></defs></svg>
+          Order Now
+        </a>
+        <a href="contact.html" class="secondary-btn">Get in Touch</a>
+      </div>
+    </section>
+
+    <!--PERKS -->
+    <section class="section">
+      <p class="section-label">Why Yellow Crumble</p>
+      <h2 class="section-title">Made with love, delivered with care</h2>
+      <p class="section-desc">We keep it simple. Using real ingredients, real recipes and real people.</p>
+
+      <div class="perks-grid">
+        <div class="perk-item">
+          <span class="perk-icon">🌾</span>
+          <p class="perk-title">Fresh Ingredients</p>
+          <p class="perk-text">Every item is made with quality. We source ingredients locally. No preservatives.</p>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">🍰</span>
+          <p class="perk-title">Baked Daily</p>
+          <p class="perk-text">Our kitchen starts at 5 am so everything on the menu is oven fresh when you order.</p>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">📦</span>
+          <p class="perk-title">Careful Packaging</p>
+          <p class="perk-text">Gift ready boxes that keep every dessert intact from shelf to your doorstep.</p>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">💛</span>
+          <p class="perk-title">Made to Order</p>
+          <p class="perk-text">Customise flavours and quantities. Perfect for events, gifts, or just treating yourself.</p>
+        </div>
+      </div>
+
+      <div class="crumble-actions">
+        <a href="about.html" class="primary-btn">Learn More</a>
+      </div>
+    </section>
+    </section>
+
+    <!-- Popular items section -->
+    <section class="section section--alt">
+      <p class="section-label">Staff picks</p>
+      <h2 class="section-title">Customer favourites</h2>
+      <p class="section-desc">Can't decide? Start here.</p>
+
+      <!-- Reuses .grid-wrap and .grid-item from style.css -->
+      <div class="featured-grid">
+        <div class="grid-wrap">
+
+          <!-- Item 1 -->
+          <article class="grid-item">
+            <div class="button-container">
+              <figure class="image-box">
+                <img src="../images/image-brownie-desktop.jpg" alt="Chocolate Fudge Brownie">
+                <span class="badge">⭐ Fan Favourites</span>
+              </figure>
+              <a href="index.html" class="add-to-cart-button">View on Menu</a>
+            </div>
+            <div class="item-type">Brownie</div>
+            <h3 class="third-header">Chocolate Fudge Brownie</h3>
+            <div class="item-price">$3.99</div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="grid-item">
+            <div class="button-container">
+              <figure class="image-box">
+                <img src="../images/image-macaron-desktop.jpg" alt="Five Macarons">
+                <span class="badge">🔥 Popular</span>
+              </figure>
+              <a href="index.html" class="add-to-cart-button">View on Menu</a>
+            </div>
+            <div class="item-type">Macaron</div>
+            <h3 class="third-header">Five Macarons</h3>
+            <div class="item-price">$3.99</div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="grid-item">
+            <div class="button-container">
+              <figure class="image-box">
+                <img src="../images/image-meringue-desktop.jpg" alt="Lemon Meringue">
+                <span class="badge">✨ New</span>
+              </figure>
+              <a href="index.html" class="add-to-cart-button">View on Menu</a>
+            </div>
+            <div class="item-type">Meringue</div>
+            <h3 class="third-header">Lemon Meringue</h3>
+            <div class="item-price">$3.99</div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Link to full menu page -->
+      <div class="full-menu-link"> 
+        <a href="index.html" class="primary-btn">See Full Menu</a>
+      </div>
+    </section>
+{% endblock %}

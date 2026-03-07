@@ -1,0 +1,88 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %}
+    Login | Yellow Crumble
+{% endblock %}
+
+{% block extra_styles %}
+  <!-- Login page specific styles -->
+  <link rel="stylesheet" href="{% static 'myapp/Styles/login.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- login form -->
+    <div class="login-form-wrap">
+      <div class="login-box">
+
+        <!-- Logo link back to home -->
+        <a href="home.html" class="login-logo">Yellow Crumble</a>
+
+        <h2>Welcome back</h2>
+        <p class="login-sub">Enter your details below to log in to your account.</p>
+
+        <!-- Form -->
+        <form action="#" method="post">
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="password">Password</label>
+              <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+
+          <div class="checkbox-row">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Keep me logged in</label>
+          </div>
+
+          <button type="submit" class="btn-submit">
+
+            <!-- Lock icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12 1a5 5 0 0 1 5 5v3h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5Zm0 11a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0-9a3 3 0 0 0-3 3v3h6V6a3 3 0 0 0-3-3Z"/>
+            </svg>
+            Log In
+          </button>
+
+        </form>
+
+        <div class="divider">or</div>
+
+        <!-- Continue without an account -->
+        <a href="index.html" class="btn-guest">
+          <!-- Bag icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 0 0-2 0v1H7V3a1 1 0 0 0-1-1Zm-2 5h16v11H4V7Zm8 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/>
+          </svg>
+          Continue as Guest
+        </a>
+
+        <p class="signup-prompt">
+          Don't have an account? <a href="signup.html">Create one free</a>
+        </p>
+
+      </div>
+    </div>
+{% endblock %}

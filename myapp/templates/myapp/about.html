@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    About Us | Yellow Crumble
+{% endblock %}
+
+{% block extra_styles %}
+  <!-- About page specific styles -->
+  <link rel="stylesheet" href="{% static 'myapp/Styles/about.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/home_style.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/Styles/faq.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- About Section -->
+    <section class="section">
+      <div class="about-inner">
+
+        <div class="about-img-wrap">
+          <img src="{% static 'myapp/images/happy-baker-showing-tray-fresh-bread-kitchen-bakery-49289163.webp' %}" alt="Yellow Crumble Bakery Interior">
+        </div>
+
+        <div class="about-text">
+          <p class="section-label">Our story</p>
+          <h2 class="section-title">Our little bakery with a lovely treats</h2>
+          <p class="section-desc">
+            Yellow Crumble started as a small weekend hobby in a tiny kitchen and grew into
+            something much greater. We keep our desserts simple.
+            They're made with patience and a lot of love.
+          </p>
+          <p class="section-desc">
+            Every recipe on our menu has been tested dozens of times 
+            until it earned a permanent spot. Come Try Now!
+          </p>
+          <a href="contact.html" class="secondary-btn">Say Hello</a>
+        </div>
+
+      </div>
+    </section>
+{% endblock %}

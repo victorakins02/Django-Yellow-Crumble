@@ -1,0 +1,215 @@
+/* 
+   LOGIN PAGE – additional styles only
+   Shared tokens come from style.css
+ */
+
+/*  Full-height split layout  */
+.login-page {
+  min-height: calc(100vh - 65px); /* subtract header height */
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/*  Right form panel  */
+.login-form-wrap {
+  flex: 1 1 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: var(--rose50);
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Logo link at top of form */
+.login-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rose900);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+}
+
+.login-box h2 {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--rose900);
+  margin: 0 0 0.4rem;
+}
+
+.login-box p.login-sub {
+  color: var(--rose500);
+  font-size: 0.9375rem;
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+/*  Form elements  */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rose900);
+  letter-spacing: 0.03em;
+}
+
+.form-group input {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--rose900);
+  background-color: var(--white);
+  border: 1.5px solid var(--rose100);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: var(--rose300);
+}
+
+.form-group input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px hsl(14, 86%, 92%);
+}
+
+/* Label row with forgot password link */
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.forgot-link:hover {
+  opacity: 0.75;
+}
+
+/* Remember me checkbox row */
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkbox-row label {
+  font-size: 0.875rem;
+  color: var(--rose500);
+  cursor: pointer;
+}
+
+/*  Submit button  */
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 2rem;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-submit:hover {
+  background-color: hsl(14, 86%, 35%);
+  transform: translateY(-2px);
+}
+
+/*  Divider  */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  color: var(--rose300);
+  font-size: 0.8125rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--rose100);
+}
+
+/*  Guest button  */
+.btn-guest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 2rem;
+  background-color: var(--white);
+  color: var(--rose900);
+  border: 1.5px solid var(--rose100);
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-guest:hover {
+  border-color: var(--rose300);
+  color: var(--red);
+  transform: translateY(-2px);
+}
+
+/*  Sign up prompt  */
+.signup-prompt {
+  text-align: center;
+  margin-top: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--rose500);
+}
+
+.signup-prompt a {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-prompt a:hover {
+  text-decoration: underline;
+}

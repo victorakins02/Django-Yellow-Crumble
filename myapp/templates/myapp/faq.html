@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    About Us | Yellow Crumble
+{% endblock %}
+
+{% block extra_styles %}
+  <!-- FAQ page specific styles -->
+  <link rel="stylesheet" href="{% static 'myapp/Styles/faq.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/home_style.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/Styles/about.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- PAGE BANNER  -->
+    <section class="page-banner">
+      <p class="page-banner-top">Got questions?</p>
+      <h2 class="page-banner-title">Frequently Asked Questions</h2>
+      <p class="page-banner-sub">
+        Everything you need to know about our desserts, orders, and bakery.
+        Can't find an answer? We're always happy to help.
+      </p>
+    </section>
+
+    <!-- FAQ Section  -->
+    <section class="faq-section">
+      <div class="faq-inner">
+
+        <!-- Ordering Questions -->
+        <p class="faq-category-title">Ordering</p>
+
+        <details>
+          <summary>How do I place an order?</summary>
+          <p class="faq-answer">
+            You can browse and add items directly from our <a href="index.html">Menu page</a>. Once you're happy with your selection, head to the cart and follow the checkout steps. For large or custom orders, we recommend <a href="contact.html">getting in touch</a> with us first so we can plan ahead.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I change or cancel my order after placing it?</summary>
+          <p class="faq-answer">
+            Because everything is baked fresh to order, we can only accept changes or cancellations up to 2 hours after your order is placed. After that, our kitchen will have already started on your treats. Please <a href="contact.html">contact us</a> as soon as possible if you need to make a change.
+          </p>
+        </details>
+
+        <details>
+          <summary>Do you offer same-day orders?</summary>
+          <p class="faq-answer">
+            Same-day orders are available for in-store pickup only, subject to availability. We recommend ordering at least 24 hours in advance to guarantee your items. For weekend orders, placing your order by Friday afternoon is strongly advised as we sell out quickly!
+          </p>
+        </details>
+
+        <!-- Allergens & Ingredients Section -->
+        <p class="faq-category-title">Allergens &amp; Ingredients</p>
+
+        <details>
+          <summary>Do your products contain nuts?</summary>
+          <p class="faq-answer">
+            Some of our products do contain nuts — for example, our Walnut Baklava. Our kitchen also handles nuts regularly, so we cannot guarantee any product is completely nut-free. Full allergen information is listed on each product page. If you have a severe allergy, please <a href="contact.html">contact us</a> before ordering.
+          </p>
+        </details>
+
+        <details>
+          <summary>Do you offer vegan or gluten-free options</summary>
+          <p class="faq-answer">
+            Absolutely! Our bakers can adjust many desserts to be vegan or gluten-free. Just leave a note when you order.
+        </details>
+
+        <details>
+          <summary>Do you use artificial preservatives or additives?</summary>
+          <p class="faq-answer">
+            Never. Every item at Yellow Crumble is made from natural, quality ingredients with no artificial preservatives or additives. This is also why our products are best enjoyed within 2–3 days of purchase — that freshness is the whole point!
+          </p>
+        </details>
+
+        <!-- Delivery & Pickup Section -->
+        <p class="faq-category-title">Delivery &amp; Pickup</p>
+
+        <details>
+          <summary>Do you offer delivery?</summary>
+          <p class="faq-answer">
+            Yes! We deliver within the Dublin area on Tuesday, Thursday, and Saturday. Delivery is free on orders over €30, and a flat fee of €4.50 applies to smaller orders. We're working on expanding our delivery zones — <a href="contact.html">contact us</a> if you're outside Dublin to check if we can reach you.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is your patio dog-friendly?</summary>
+          <p class="faq-answer">
+            Yes, and we might even bring your pup a treat from the kitchen.
+          </p>
+        </details>
+
+        <!-- Custom Orders Section -->
+        <p class="faq-category-title">Custom &amp; Event Orders</p>
+
+        <details>
+          <summary>Do you cater for private events?</summary>
+          <p class="faq-answer">
+            We can host small gatherings of up to 20 people or prepare trays for off-site parties.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I customise flavours or add a personal message?</summary>
+          <p class="faq-answer">
+            Yes to both! Many of our items can be customised with flavour swaps, and we're always happy to include a handwritten gift note in your order. Just leave us a note in the order message field during checkout, or <a href="contact.html">reach out directly</a> for bigger customisations.
+          </p>
+        </details>
+
+        <!-- More questions  -->
+        <div class="faq-cta">
+          <span class="faq-cta-icon">💬</span>
+          <h2>Still have a question?</h2>
+          <p>We're friendly, we promise. Drop us a message and we'll get back to you quickly.</p>
+          <a href="contact.html" class="btn-primary">Contact Us</a>
+        </div>
+
+      </div>
+    </section>
+{% endblock %}

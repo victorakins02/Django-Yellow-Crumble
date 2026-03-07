@@ -1,0 +1,224 @@
+/*
+   GALLERY PAGE – additional styles only
+   Shared tokens come from style.css
+*/
+
+.page-banner {
+  background-color: var(--rose100);
+  padding: 4rem 1rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%,
+    hsl(14, 86%, 92%) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-banner-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 0.75rem;
+  position: relative;
+}
+
+.page-banner-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--rose900);
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  position: relative;
+}
+
+.page-banner-sub {
+  color: var(--rose500);
+  font-size: 1.0625rem;
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Gallery section */
+.gallery-section {
+  padding: 5rem 1rem;
+}
+
+.gallery-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Category filter tabs  */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.filter-tab {
+  padding: 0.45rem 1.25rem;
+  border-radius: 50vh;
+  border: 1.5px solid var(--rose100);
+  background-color: var(--white);
+  color: var(--rose500);
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.filter-tab:hover,
+.filter-tab.active {
+  border-color: var(--red);
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 260px;
+  gap: 1rem;
+}
+
+/* Spanning items */
+.gallery-item--tall {
+  grid-row: span 2;
+}
+
+.gallery-item--wide {
+  grid-column: span 2;
+}
+
+/* Each gallery item */
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: var(--rose100);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Overlay that appears on hover */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    hsl(14, 65%, 9%, 0.85) 0%,
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.overlay-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: hsl(14, 86%, 75%);
+  margin: 0 0 0.25rem;
+}
+
+.overlay-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Fallback placeholder for items without a photo yet */
+.gallery-item--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  background-color: var(--rose100);
+}
+
+/*  CTA strip  */
+.gallery-cta {
+  background-color: var(--rose100);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.gallery-cta-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.gallery-cta h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rose900);
+  margin: 0 0 0.5rem;
+}
+
+.gallery-cta p {
+  color: var(--rose500);
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: hsl(14, 86%, 35%);
+  transform: translateY(-2px);
+}
+

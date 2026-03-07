@@ -1,0 +1,235 @@
+/* 
+   CAREERS PAGE – additional styles only
+   Shared tokens come from style.css
+ */
+
+.page-banner {
+  background-color: var(--rose100);
+  padding: 4rem 1rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%,
+    hsl(14, 86%, 92%) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-banner-top {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 0.75rem;
+  position: relative;
+}
+
+.page-banner-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--rose900);
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  position: relative;
+}
+
+.page-banner-sub {
+  color: var(--rose500);
+  font-size: 1.0625rem;
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--rose900);
+  text-align: center;
+  margin: 0 auto 0.75rem;
+  max-width: 500px;
+}
+
+/*  Jobs section  */
+.jobs-section {
+  padding: 5rem 1rem;
+}
+
+.jobs-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/*  Job card  */
+.job-card {
+  background-color: var(--white);
+  border: 1.5px solid var(--rose100);
+  border-radius: 14px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.job-card:hover {
+  border-color: var(--red);
+  box-shadow: 0 6px 24px hsl(14, 30%, 86%);
+  transform: translateY(-3px);
+}
+
+/* Left — icon blob */
+.job-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background-color: var(--rose100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+/* Middle — details */
+.job-details {
+  flex: 1 1 240px;
+}
+
+.job-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--rose900);
+  margin: 0 0 0.5rem;
+}
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+/* Pill tags for type / location */
+.job-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50vh;
+  background-color: var(--rose100);
+  color: var(--rose500);
+}
+
+.job-tag--highlight {
+  background-color: hsl(14, 86%, 94%);
+  color: var(--red);
+}
+
+.job-desc {
+  font-size: 0.9rem;
+  color: var(--rose500);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Right — apply button */
+.job-action {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.btn-apply {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.5rem;
+  background-color: transparent;
+  color: var(--rose900);
+  border: 1.5px solid var(--rose900);
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease,
+              border-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-apply:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/*  No roles CTA  */
+.careers-cta {
+  background-color: var(--rose100);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.careers-cta-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.careers-cta h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rose900);
+  margin: 0 0 0.5rem;
+}
+
+.careers-cta p {
+  color: var(--rose500);
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: hsl(14, 86%, 35%);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,326 @@
+/* 
+   CONTACT PAGE – additional styles only
+   All shared tokens (colours, fonts, wrappers,
+   header, footer, nav) come from style.css
+ */
+
+/*  Page banner  */
+.page-banner {
+  background-color: var(--rose100);
+  padding: 4rem 1rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%,
+    hsl(14, 86%, 92%) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-banner-top {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 0.75rem;
+  position: relative;
+}
+
+.page-banner-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--rose900);
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  position: relative;
+}
+
+.page-banner-sub {
+  color: var(--rose500);
+  font-size: 1.0625rem;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+}
+
+/*  Contact layout  */
+.contact-section {
+  padding: 5rem 1rem;
+}
+
+.contact-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+/*  Info column  */
+.contact-info {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 12px hsl(14, 30%, 88%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px hsl(14, 30%, 80%);
+}
+
+.info-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 0.25rem;
+}
+
+.info-value {
+  font-size: 0.9375rem;
+  color: var(--rose900);
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+}
+
+.info-note {
+  font-size: 0.8125rem;
+  color: var(--rose500);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Opening hours table */
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.25rem;
+}
+
+.hours-table tr td {
+  font-size: 0.875rem;
+  padding: 0.2rem 0;
+  color: var(--rose900);
+}
+
+.hours-table tr td:last-child {
+  text-align: right;
+  color: var(--rose500);
+}
+
+.hours-table .closed td {
+  color: var(--rose300);
+}
+
+/*  Form column  */
+.contact-form-wrap {
+  flex: 2 1 360px;
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 2px 16px hsl(14, 30%, 86%);
+}
+
+.form-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--rose900);
+  margin: 0 0 0.4rem;
+}
+
+.form-subtitle {
+  font-size: 0.9rem;
+  color: var(--rose500);
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+/* Row that holds two fields side by side */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  flex: 1 1 200px;
+}
+
+/* Full-width override */
+.form-group--full {
+  flex: 1 1 100%;
+}
+
+.form-group label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rose900);
+  letter-spacing: 0.03em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--rose900);
+  background-color: var(--rose50);
+  border: 1.5px solid var(--rose100);
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--rose300);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px hsl(14, 86%, 92%);
+  background-color: var(--white);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Custom select arrow */
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23987070' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Submit button — consistent with home.css .btn-primary */
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 2rem;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+  background-color: hsl(14, 86%, 35%);
+  transform: translateY(-2px);
+}
+
+/* Success message shown after submit */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.form-success.visible {
+  display: block;
+}
+
+.form-success-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form-success h3 {
+  font-size: 1.25rem;
+  color: var(--rose900);
+  margin: 0 0 0.5rem;
+}
+
+.form-success p {
+  color: var(--rose500);
+  font-size: 0.9375rem;
+}
+
+/*  Map placeholder strip  */
+.map-section {
+  background-color: var(--rose100);
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.map-placeholder {
+  max-width: 1140px;
+  margin: 0 auto;
+  background-color: var(--rose100);
+  border: 2px dashed var(--rose300);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  color: var(--rose400);
+  font-size: 0.9rem;
+}
+
+.map-placeholder span {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/*  Responsive  */
+@media (max-width: 700px) {
+  .contact-form-wrap {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .contact-inner {
+    flex-direction: column;
+  }
+}
