@@ -29,11 +29,12 @@ class Career(models.Model):
         return self.title
     
 class Review(models.Model):
-    name = models.CharField(max_length=100)
-    review = models.TextField()
-    rating = models.IntegerField()
+    customer_name = models.CharField(max_length=100)
+    rating = models.IntegerField() # 1 to 5
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.name
+        return f"{self.customer_name} - {self.rating} stars"
 
 class ContactMessage(models.Model):
     first_name = models.CharField(max_length=100)
@@ -45,7 +46,7 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.first_name} - {self.subject}"
-    
+        
 # class UserProfile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     

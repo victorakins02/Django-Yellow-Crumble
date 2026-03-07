@@ -39,3 +39,8 @@ class ContactForm(forms.Form):
         if len(message) < 10:
             raise forms.ValidationError("Your message is too short.")
         return message
+
+class ReviewForm(forms.Form):
+    customer_name = forms.CharField(max_length=100)
+    rating = forms.IntegerField(min_value=1, max_value=5)
+    comment = forms.CharField(widget=forms.Textarea)

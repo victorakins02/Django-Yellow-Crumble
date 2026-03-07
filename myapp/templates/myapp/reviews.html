@@ -1,0 +1,71 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block title %}
+    Reviews | Yellow Crumble
+{% endblock %}
+
+{% block extra_styles %}
+  <!-- Reviews page specific styles -->
+  <link rel="stylesheet" href="{% static 'myapp/Styles/reviews.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/home_style.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/review.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="section section--alt">
+    <div class="contact-form-wrap" style="max-width: 900px; margin: 0 auto;">
+        
+        <h2 class="form-title">Leave a Review</h2>
+        <form method="POST" action="{% url 'review' %}" style="margin-bottom: 50px; background: white; padding: 30px; border-radius: 12px;">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="customer_name">Your Name</label>
+                    <input type="text" name="customer_name" required placeholder="e.g. Alex Smith">
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating (1-5)</label>
+                    <input type="number" name="rating" min="1" max="5" value="5" required>
+                </div>
+            </div>
+            <div class="form-group form-group--full">
+                <label for="comment">Your Experience</label>
+                <textarea name="comment" required placeholder="How was the baklava?"></textarea>
+            </div>
+            <button type="submit" class="primary-btn">Submit Review</button>
+        </form>
+
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 40px 0;">
+
+        <h2 class="section-title">Customer Feedback</h2>
+        <div class="featured-grid">
+            <div class="grid-wrap">
+                {% for review in reviews %}
+                <article class="grid-item" style="padding: 20px; background: white; border-radius: 12px; position: relative;">
+                    <div class="item-type">Rating: {{ review.rating }}/5 ⭐</div>
+                    <h3 class="third-header">{{ review.customer_name }}</h3>
+                    <p style="margin: 10px 0; color: #555;">"{{ review.comment }}"</p>
+                    
+                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                        <a href="{% url 'edit_review' review.id %}" class="secondary-btn" style="padding: 5px 10px; font-size: 0.8rem;">Edit</a>
+                        
+                        <form method="POST" action="{% url 'delete_review' review.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="add-to-cart-button" 
+                                    style="background: #ff4444; border: none; padding: 5px 10px; font-size: 0.8rem; width: auto;"
+                                    onclick="return confirm('Delete this review?')">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </article>
+                {% empty %}
+                <p>No reviews yet. Be the first!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+    
+{% endblock %}

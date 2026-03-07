@@ -124,4 +124,33 @@
         <a href="index.html" class="primary-btn">See Full Menu</a>
       </div>
     </section>
+
+    <section class="section">
+      <p class="section-label">Reviews</p>
+      <h2 class="section-title">What customers say</h2>
+      <p class="section-desc">Feedback from our customers.</p>
+
+      <div class="featured-grid">
+        <div class="grid-wrap">
+          {% for review in reviews %}
+          <article class="grid-item" style="padding: 20px; border: 1px solid #eee; border-radius: 12px;">
+            <div class="item-type">Rating: {{ review.rating }}/5 ⭐</div>
+            <h3 class="third-header">{{ review.customer_name }}</h3>
+            <p style="font-style: italic; color: #555; margin-top: 10px;">
+                "{{ review.comment }}"
+            </p>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #999;">
+                {{ review.created_at|date:"M d, Y" }}
+            </div>
+          </article>
+          {% empty %}
+          <p>No reviews yet. Be the first to leave one!</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="full-menu-link"> 
+        <a href="reviews.html" class="secondary-btn">Write a Review</a>
+      </div>
+    </section>
 {% endblock %}
