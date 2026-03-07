@@ -1,11 +1,11 @@
 {% extends 'myapp/base.html' %} 
+{% load static %}
 
 {% block title %}
     Edit Review | Yellow Crumble
 {% endblock %}
 
 {% block extra_styles %}
-  <!-- Edit review page specific styles -->
   <link rel="stylesheet" href="{% static 'myapp/Styles/review.css' %}">
   <link rel="stylesheet" href="{% static 'myapp/Styles/home_style.css' %}">
 {% endblock %}
