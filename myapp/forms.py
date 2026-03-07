@@ -1,50 +1,41 @@
 from django import forms
 
-from .models import BlogPost
+from .models import Career, Category, MenuItem
 
-
-class NewBlogPostForm(forms.Form):
-    title = forms.CharField(
-        max_length=200,
-        widget=forms.TextInput(attrs={'class': 'example-css-class', 'placeholder': 'Enter Post Title'}),
-        label='Title'
+class ContactForm(forms.Form):
+    first_name = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. Sarah'}),
+        label='First Name'
     )
-    content = forms.CharField(
-        widget=forms.Textarea(attrs={'class': 'example-css-class'}),
-        label='Content'
+    last_name = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. Murphy'}),
+        label='Last Name'
     )
-    image = forms.FileField(
-        required=False,
-        widget=forms.ClearableFileInput(attrs={'class': 'example-css-class'}),
-        label='Image'
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'you@example.com'}),
+        label='Email Address'
     )
-
-    def clean_title(self):
-        title = self.cleaned_data.get('title')
-        if BlogPost.objects.filter(title=title).exists():
-            raise forms.ValidationError('A post with this title already exists')
-        return title
-
-    def clean_content(self):
-        content = self.cleaned_data.get('content')
-        if 'http://' in content or 'https://' in content:
-            raise forms.ValidationError('HTTP Links not allowed in content')
-        return content
-
-
-class EditBlogPostForm(forms.Form):
-    content = forms.CharField(
-        widget=forms.Textarea(attrs={'class': 'example-css-class'}),
-        label='Content'
+    subject = forms.ChoiceField(
+        choices=[('job', 'Job Application'), ('general', 'General Inquiry')],
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='What is it about?'
     )
-    image = forms.FileField(
-        required=False,
-        widget=forms.ClearableFileInput(attrs={'class': 'example-css-class'}),
-        label='Image'
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Tell us what is on your mind..'}),
+        label='Message'
     )
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if "tempmail.com" in email:
+            raise forms.ValidationError("Please use a permanent email address.")
+        return email
 
-    def clean_content(self):
-        content = self.cleaned_data.get('content')
-        if 'http://' in content or 'https://' in content:
-            raise forms.ValidationError('HTTP Links not allowed in content')
-        return content
+    def clean_message(self):
+        message = self.cleaned_data.get('message')
+        if 'http' in message:
+            raise forms.ValidationError("Links are not allowed in the message.")
+        if len(message) < 10:
+            raise forms.ValidationError("Your message is too short.")
+        return message
