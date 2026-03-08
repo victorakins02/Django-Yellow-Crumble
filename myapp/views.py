@@ -39,6 +39,13 @@ def add_to_cart(request):
         OrderItem.objects.create(order=order, product=product)
         
         return redirect('index') 
+    
+def remove_from_cart(request, item_id):
+    if request.method == "POST":
+        item = OrderItem.objects.get(id=item_id)
+        item.delete()
+        
+        return redirect('index')
 
 def login(request):
     return render(request, 'myapp/login.html')
