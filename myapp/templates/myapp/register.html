@@ -1,0 +1,26 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block title %}
+    Register | Yellow Crumble
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'myapp/Styles/register.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/Styles/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="inner-wrapper" style="padding: 50px; max-width: 500px; margin: auto;">
+    <h1 class="main-header">Join Yellow Crumble</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <button type="submit" class="add-to-cart-button" style="width: 100%; margin-top: 20px;">
+            Create Account
+        </button>
+    </form>
+    
+    <p style="margin-top: 20px;">Already have an account? <a href="{% url 'login' %}">Log in here</a></p>
+</div>
+{% endblock %}

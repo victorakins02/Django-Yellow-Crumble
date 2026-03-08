@@ -4,6 +4,7 @@ from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import timezone
 
+
 # NEW
 
 from django.shortcuts import render , HttpResponse
@@ -11,6 +12,9 @@ from django.db import transaction
 
 from myapp.forms import ContactForm, ReviewForm
 from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import authenticate, login as auth_login, logout as a_logout
+from .models import UserProfile
 
 def home(request):
     reviews = Review.objects.all().order_by('-created_at')[:3]
@@ -133,3 +137,35 @@ def newsletter(request):
         return redirect('home')
         
     return render(request, 'myapp/newsletter.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            UserProfile.objects.create(user=user)
+            auth_login(request, user)
+            return redirect('index') 
+            
+    else:
+        form = UserCreationForm()
+        
+    return render(request, 'myapp/register.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                return redirect('home')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'myapp/login.html', {'form': form})
+
+def logout_view(request):
+    a_logout(request)
+    return redirect('home')

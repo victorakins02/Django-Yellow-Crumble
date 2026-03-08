@@ -25,7 +25,24 @@
           <li class="nav-item"><a href="{% url 'about' %}">About Us</a></li>
           <li class="nav-item"><a href="{% url 'index' %}">Menu</a></li>
           <li class="nav-item"><a href="{% url 'contact' %}">Contact</a></li>
-          <li class="nav-item"><a href="{% url 'login' %}">Log in</a></li>
+          <!-- <li class="nav-item"><a href="{% url 'login' %}">Log in</a></li> -->
+
+          {% if user.is_authenticated %}
+            <li class="nav-item" style="color: #5d4037; font-weight: bold; margin-left: 15px;">
+              Hello, {{ user.username }}
+            </li>
+            <li class="nav-item">
+              <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; font:inherit; padding:0;">
+                  Log out
+                </button>
+              </form>
+            </li>
+          {% else %}
+            <li class="nav-item"><a href="{% url 'login' %}">Log in</a></li>
+            <li class="nav-item"><a href="{% url 'register' %}">Sign up</a></li>
+          {% endif %}
         </ul>
       </nav>
     </div>
