@@ -13,7 +13,8 @@ from .models import Career, Category, ContactMessage, MenuItem, Review
 
 def home(request):
     reviews = Review.objects.all().order_by('-created_at')[:3]
-    return render(request, 'myapp/home.html', {'reviews': reviews})
+    items = MenuItem.objects.all()[:3]
+    return render(request, 'myapp/home.html', {'reviews': reviews, 'items': items})
 
 def index(request):
     categories = Category.objects.all().prefetch_related('menuitem_set')
@@ -65,7 +66,6 @@ def edit_review(request, review_id):
     review = Review.objects.get(id=review_id)
 
     if request.method == 'POST':
-        # Update the fields manually
         review.customer_name = request.POST.get('customer_name')
         review.rating = request.POST.get('rating')
         review.comment = request.POST.get('comment')
@@ -78,14 +78,11 @@ def edit_review(request, review_id):
 def delete_review(request, review_id):
     if request.method == 'POST':
         try:
-            # We use .get() manually instead of get_object_or_404
             review = Review.objects.get(id=review_id)
             review.delete()
             print(f"Review {review_id} deleted successfully!")
         except Review.DoesNotExist:
-            # If the review is already gone, just ignore the error
             print(f"Review {review_id} was not found, skipping delete.")
             
-    # Always redirect back to the review page name from your urls.py
     return redirect('review')
 

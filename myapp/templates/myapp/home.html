@@ -1,4 +1,5 @@
 {% extends "myapp/base.html" %}
+{% load static %}
 
 {% block title %}Home - Yellow Crumble{% endblock %}
 
@@ -73,49 +74,23 @@
       <!-- Reuses .grid-wrap and .grid-item from style.css -->
       <div class="featured-grid">
         <div class="grid-wrap">
-
-          <!-- Item 1 -->
-          <article class="grid-item">
-            <div class="button-container">
-              <figure class="image-box">
-                <img src="../images/image-brownie-desktop.jpg" alt="Chocolate Fudge Brownie">
-                <span class="badge">⭐ Fan Favourites</span>
-              </figure>
-              <a href="index.html" class="add-to-cart-button">View on Menu</a>
-            </div>
-            <div class="item-type">Brownie</div>
-            <h3 class="third-header">Chocolate Fudge Brownie</h3>
-            <div class="item-price">$3.99</div>
-          </article>
-
-          <!-- Item 2 -->
-          <article class="grid-item">
-            <div class="button-container">
-              <figure class="image-box">
-                <img src="../images/image-macaron-desktop.jpg" alt="Five Macarons">
-                <span class="badge">🔥 Popular</span>
-              </figure>
-              <a href="index.html" class="add-to-cart-button">View on Menu</a>
-            </div>
-            <div class="item-type">Macaron</div>
-            <h3 class="third-header">Five Macarons</h3>
-            <div class="item-price">$3.99</div>
-          </article>
-
-          <!-- Item 3 -->
-          <article class="grid-item">
-            <div class="button-container">
-              <figure class="image-box">
-                <img src="../images/image-meringue-desktop.jpg" alt="Lemon Meringue">
-                <span class="badge">✨ New</span>
-              </figure>
-              <a href="index.html" class="add-to-cart-button">View on Menu</a>
-            </div>
-            <div class="item-type">Meringue</div>
-            <h3 class="third-header">Lemon Meringue</h3>
-            <div class="item-price">$3.99</div>
-          </article>
-
+          {% for item in items %}
+            <!-- Item 1 -->
+            <article class="grid-item">
+              <div class="button-container">
+                <figure class="image-box">
+                  <img src="{% static 'myapp/images/' %}{{ item.image_name }}" alt="{{ item.name }}">
+                  <span class="badge">⭐ Fan Favourites</span>
+                </figure>
+                <a href="{% url 'index' %}" class="add-to-cart-button">View on Menu</a>
+              </div>
+              <div class="item-type">{{ item.type }}</div>
+              <h3 class="third-header">{{ item.description }}</h3>
+              <div class="item-price">${{ item.price }}</div>
+            </article>
+            {% empty %}
+            <p>No featured items available.</p>
+          {% endfor %}
         </div>
       </div>
 
