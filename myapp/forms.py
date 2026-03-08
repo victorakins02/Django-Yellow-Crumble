@@ -44,3 +44,7 @@ class ReviewForm(forms.Form):
     customer_name = forms.CharField(max_length=100)
     rating = forms.IntegerField(min_value=1, max_value=5)
     comment = forms.CharField(widget=forms.Textarea)
+
+class NewsletterForm(forms.Form):
+    name = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name (Optional)'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'you@example.com'}))

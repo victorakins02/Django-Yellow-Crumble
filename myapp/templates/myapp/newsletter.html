@@ -1,0 +1,45 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block title %}Newsletter - Yellow Crumble{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'myapp/Styles/review.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="section" style="padding: 60px 20px; text-align: center;">
+    <div class="review-form-card" style="max-width: 500px; margin: 0 auto;">
+        
+        <div style="font-size: 3rem; margin-bottom: 20px;">✉️</div>
+        
+        <h2 class="section-title">The Crumble Club</h2>
+        <p class="section-desc">Join our newsletter for 10% off your next visit!</p>
+
+            <form method="POST" action="{% url 'newsletter' %}" style="margin-top: 30px; text-align: left;">
+                {% csrf_token %}
+                
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="name" style="font-weight: bold; display: block; margin-bottom: 8px;">Full Name</label>
+                    <input type="text" name="name" id="full_name" placeholder="Enter your name" required 
+                           style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label for="email" style="font-weight: bold; display: block; margin-bottom: 8px;">Email Address</label>
+                    <input type="email" name="email" id="user_email" placeholder="example@email.com" required 
+                           style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+
+                <button type="submit" class="primary-btn" style="width: 100%; padding: 12px; font-size: 1.1rem;">
+                    Subscribe to Newsletter
+                </button>
+            </form>
+            
+            <p style="font-size: 0.8rem; color: #888; margin-top: 15px;">
+                Unsubscribe at any time.
+            </p>
+       
+    </div>
+</section>
+{% endblock %}

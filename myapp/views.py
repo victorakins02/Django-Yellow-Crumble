@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.shortcuts import render , HttpResponse
 
 from myapp.forms import ContactForm, ReviewForm
-from .models import Career, Category, ContactMessage, MenuItem, Review
+from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Review
 
 def home(request):
     reviews = Review.objects.all().order_by('-created_at')[:3]
@@ -86,3 +86,14 @@ def delete_review(request, review_id):
             
     return redirect('review')
 
+def newsletter(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '') 
+        email = request.POST.get('email')
+    
+        NewsletterSubscription.objects.create(name=name, email=email)
+        
+        print(f"New newsletter subscription: {email}")
+        return redirect('home')
+        
+    return render(request, 'myapp/newsletter.html')

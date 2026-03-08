@@ -46,6 +46,14 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.first_name} - {self.subject}"
+    
+class NewsletterSubscription(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
         
 # class UserProfile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
