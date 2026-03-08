@@ -38,7 +38,7 @@ def add_to_cart(request):
         
         OrderItem.objects.create(order=order, product=product)
         
-        return redirect('menu') 
+        return redirect('index') 
 
 def login(request):
     return render(request, 'myapp/login.html')
