@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.shortcuts import render , HttpResponse
 
 from myapp.forms import ContactForm, ReviewForm
-from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Review
+from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review
 
 def home(request):
     reviews = Review.objects.all().order_by('-created_at')[:3]
@@ -17,8 +17,28 @@ def home(request):
     return render(request, 'myapp/home.html', {'reviews': reviews, 'items': items})
 
 def index(request):
-    categories = Category.objects.all().prefetch_related('menuitem_set')
-    return render(request, 'myapp/index.html', {'categories': categories})
+    categories = Category.objects.all()
+    order, created = Order.objects.get_or_create(is_ordered=False)
+    cart_items = order.items.all()
+    
+    total = sum(item.product.price for item in cart_items)
+
+    return render(request, 'myapp/index.html', {
+        'categories': categories,
+        'cart_items': cart_items,
+        'total': total
+    })
+
+def add_to_cart(request):
+    if request.method == "POST":
+        item_id = request.POST.get('item_id')
+        product = MenuItem.objects.get(id=item_id)
+        
+        order, created = Order.objects.get_or_create(is_ordered=False)
+        
+        OrderItem.objects.create(order=order, product=product)
+        
+        return redirect('menu') 
 
 def login(request):
     return render(request, 'myapp/login.html')

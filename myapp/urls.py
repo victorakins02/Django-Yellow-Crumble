@@ -14,4 +14,5 @@ urlpatterns = [
     path("edit-review/<int:review_id>/", views.edit_review, name="edit_review"),
     path("delete-review/<int:review_id>/", views.delete_review, name="delete_review"),
     path("newsletter.html/", views.newsletter, name="newsletter"),
+    path('add-to-cart/', views.add_to_cart, name='add_to_cart'),
 ]
