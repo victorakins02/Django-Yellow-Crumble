@@ -48,10 +48,10 @@
       <div class="footer-column">
         <p class="footer-column-title">Pages</p>
         <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="index.html">Menu</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'index' %}">Menu</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
       </div>
 
@@ -72,7 +72,7 @@
         <ul>
           <li><a href="mailto:hello@yellowcrumble.ie">hello@yellowcrumble.ie</a></li>
           <li><a href="tel:+35312345678">+353 1 234 5678</a></li>
-          <li><a href="contact.html">Send a message</a></li>
+          <li><a href="{% url 'contact' %}">Send a message</a></li>
         </ul>
       </div>
 
