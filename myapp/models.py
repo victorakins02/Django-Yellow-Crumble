@@ -11,6 +11,7 @@ class Category(models.Model):
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+    stock = models.PositiveIntegerField(default=50) 
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image_name = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)

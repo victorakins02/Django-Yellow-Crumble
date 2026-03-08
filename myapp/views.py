@@ -7,6 +7,7 @@ from django.utils import timezone
 # NEW
 
 from django.shortcuts import render , HttpResponse
+from django.db import transaction
 
 from myapp.forms import ContactForm, ReviewForm
 from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review
@@ -32,13 +33,21 @@ def index(request):
 def add_to_cart(request):
     if request.method == "POST":
         item_id = request.POST.get('item_id')
-        product = MenuItem.objects.get(id=item_id)
         
-        order, created = Order.objects.get_or_create(is_ordered=False)
-        
-        OrderItem.objects.create(order=order, product=product)
-        
-        return redirect('index') 
+        with transaction.atomic():
+            product = MenuItem.objects.get(id=item_id)
+            if product.stock > 0:
+                product.stock -= 1
+                product.save()
+            
+                order, created = Order.objects.get_or_create(is_ordered=False)
+                OrderItem.objects.create(order=order, product=product)
+                
+                print(f"Success: {product.name} added and stock reduced to {product.stock}")
+            else:
+                print("Error: Out of stock!")
+
+        return redirect('index')
     
 def remove_from_cart(request, item_id):
     if request.method == "POST":
