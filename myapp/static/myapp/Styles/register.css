@@ -1,0 +1,225 @@
+/* =============================================
+   Yellow Crumble — Register Page Styles
+   ============================================= */
+
+/* ── Page layout ── */
+.register-wrapper {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background-color: var(--rose50);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft decorative blobs in the background */
+.register-wrapper::before,
+.register-wrapper::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.register-wrapper::before {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, hsl(40, 90%, 92%) 0%, transparent 70%);
+  top: -100px;
+  right: -80px;
+  opacity: 0.7;
+}
+
+.register-wrapper::after {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, hsl(14, 60%, 88%) 0%, transparent 70%);
+  bottom: -80px;
+  left: -60px;
+  opacity: 0.5;
+}
+
+/* ── Card ── */
+.register-card {
+  position: relative;
+  z-index: 1;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow:
+    0 2px 4px hsla(14, 65%, 9%, 0.04),
+    0 8px 24px hsla(14, 65%, 9%, 0.08),
+    0 24px 48px hsla(14, 65%, 9%, 0.06);
+  width: 100%;
+  max-width: 480px;
+  padding: 2.75rem 2.5rem 2.5rem;
+  animation: cardReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Card header ── */
+.register-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 0.5rem;
+}
+
+.register-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--rose900);
+  margin: 0 0 0.4rem;
+  line-height: 1.15;
+}
+
+.register-subtitle {
+  font-size: 0.9rem;
+  color: var(--rose400);
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+/* Divider under the heading */
+.register-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose100) 0%, transparent 100%);
+  margin-bottom: 1.75rem;
+  border: none;
+}
+
+/* ── Form fields ── */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* Django renders each field as a <p> — we style those */
+.register-form p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.register-form label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rose900);
+  letter-spacing: 0.01em;
+}
+
+/* Asterisk on required labels */
+.register-form label abbr {
+  color: var(--red);
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="number"],
+.register-form select,
+.register-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--rose100);
+  border-radius: 10px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--rose900);
+  background-color: var(--rose50);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.register-form input::placeholder,
+.register-form textarea::placeholder {
+  color: var(--rose300);
+}
+
+.register-form input:focus,
+.register-form select:focus,
+.register-form textarea:focus {
+  border-color: var(--red);
+  background-color: var(--white);
+  box-shadow: 0 0 0 3px hsla(14, 86%, 42%, 0.1);
+}
+
+/* Help text Django adds under fields */
+.register-form .helptext,
+.register-form span.helptext {
+  font-size: 0.775rem;
+  color: var(--rose400);
+  line-height: 1.4;
+}
+
+/* Error messages */
+.register-form ul.errorlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.register-form ul.errorlist li {
+  font-size: 0.775rem;
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* ── Submit button ── */
+.register-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--rose900);
+  color: var(--white);
+  border: none;
+  border-radius: 50vh;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.register-btn:hover {
+  background-color: var(--red);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px hsla(14, 86%, 42%, 0.3);
+}
+
+.register-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ── Footer link ── */
+.register-footer-link {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--rose500);
+}
+
+.register-footer-link a {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.register-footer-link a:hover {
+  opacity: 0.75;
+}

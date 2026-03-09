@@ -154,17 +154,21 @@ def register(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                auth_login(request, user)
-                return redirect('home')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'myapp/login.html', {'form': form})
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            auth_login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'myapp/login.html', {
+                'error': "Invalid username or password.",
+                'form': AuthenticationForm() 
+            })
+    
+    return render(request, 'myapp/login.html', {'form': AuthenticationForm()})
 
 def logout_view(request):
     a_logout(request)
