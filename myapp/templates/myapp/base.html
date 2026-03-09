@@ -29,17 +29,23 @@
 
           {% if user.is_authenticated %}
             <li class="nav-item"><a href="{% url 'profile' %}">My Profile</a></li>
+
+            {% if user.is_staff %}
+                <li class="nav-item">
+                    <a href="/admin/" style="color: #d4a017;">Admin Dashboard</a>
+                </li>
+            {% endif %}
+
             <li class="nav-item">Hello, {{ user.username }}</li>
             
             <li class="nav-item">
-              <form action="{% url 'logout' %}" method="POST" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; font:inherit; padding:0;">
-                  Log out
-                </button>
-              </form>
+                <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; font:inherit; padding:0;">
+                        Log out
+                    </button>
+                </form>
             </li>
-
         {% else %}
             <li class="nav-item"><a href="{% url 'login' %}">Log In</a></li>
             <li class="nav-item"><a href="{% url 'register' %}">Sign Up</a></li>
