@@ -16,7 +16,8 @@
     
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}  <button type="submit" class="add-to-cart-button" style="width: 100%; margin-top: 20px;">
+        {{ form.as_p }}  
+        <button type="submit" class="add-to-cart-button" style="width: 100%; margin-top: 20px;">
             Create Account
         </button>
     </form>

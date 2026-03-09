@@ -1,6 +1,9 @@
 from django import forms
 
-from .models import Career, Category, MenuItem
+from django import forms
+from .models import UserProfile
+
+from .models import Career, Category, MenuItem, Review, ContactMessage, NewsletterSubscription, UserProfile
 
 class ContactForm(forms.Form):
     first_name = forms.CharField(
@@ -48,3 +51,8 @@ class ReviewForm(forms.Form):
 class NewsletterForm(forms.Form):
     name = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name (Optional)'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'you@example.com'}))
+
+class UserProfileForm(forms.Form):
+    address = forms.CharField(max_length=255, required=False)
+    telephone_number = forms.CharField(max_length=20, required=False)
+    favorite_dessert = forms.CharField(max_length=100, required=False)

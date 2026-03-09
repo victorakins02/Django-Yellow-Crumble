@@ -9,9 +9,11 @@ from django.utils import timezone
 
 from django.shortcuts import render , HttpResponse
 from django.db import transaction
+from .models import UserProfile
+from .forms import UserProfileForm
 
 from myapp.forms import ContactForm, ReviewForm
-from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review
+from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review, UserProfile
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login, logout as a_logout
 from .models import UserProfile
@@ -91,7 +93,6 @@ def contact(request):
 
 def review(request):
     if request.method == 'POST':
-        # Create (A)
         Review.objects.create(
             customer_name=request.POST.get('customer_name'),
             rating=request.POST.get('rating'),
@@ -173,3 +174,23 @@ def login_view(request):
 def logout_view(request):
     a_logout(request)
     return redirect('home')
+
+def profile_view(request):
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            profile.address = form.cleaned_data.get('address')
+            profile.telephone_number = form.cleaned_data.get('telephone_number')
+            profile.favorite_dessert = form.cleaned_data.get('favorite_dessert')
+            profile.save()
+            return redirect('profile')
+    else:
+        form = UserProfileForm(initial={
+            'address': profile.address,
+            'telephone_number': profile.telephone_number,
+            'favorite_dessert': profile.favorite_dessert,
+        })
+
+    return render(request, 'myapp/profile.html', {'form': form})
