@@ -38,4 +38,35 @@
 
       </div>
     </section>
+
+    <section class="section">
+      <div class="about-inner">
+        </div>
+    </section>
+
+    <section class="section news-section">
+      <h2 class="section-title">Latest News</h2>
+      
+      {% if user.is_staff %}
+        <div class="admin-controls">
+            <a href="/admin/myapp/news/add/" class="secondary-btn" style="background: #28a745; color: white;">+ Add News (Staff Only)</a>
+        </div>
+      {% endif %}
+
+      <div class="news-grid">
+        {% for item in news_items %}
+          <div class="news-card">
+            <h3>{{ item.title }}</h3>
+            <p class="date">{{ item.date_posted|date:"F j, Y" }}</p>
+            <p>{{ item.content }}</p>
+            
+            {% if user.is_staff %}
+              <a href="/admin/myapp/news/{{ item.id }}/change/" style="color: red; font-size: 0.8rem;">Remove/Edit</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    
 {% endblock %}

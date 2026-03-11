@@ -13,7 +13,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 from myapp.forms import ContactForm, ReviewForm
-from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review, UserProfile
+from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review, UserProfile, News
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login, logout as a_logout
 from .models import UserProfile
@@ -194,3 +194,7 @@ def profile_view(request):
         })
 
     return render(request, 'myapp/profile.html', {'form': form})
+
+def about(request):
+    news_items = News.objects.all().order_by('-date_posted')
+    return render(request, 'myapp/about.html', {'news_items': news_items})
