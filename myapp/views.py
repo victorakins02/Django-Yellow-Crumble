@@ -25,10 +25,17 @@ def home(request):
 
 def index(request):
     categories = Category.objects.all()
-    order, created = Order.objects.get_or_create(is_ordered=False)
-    cart_items = order.items.all()
+    cart_items = []
+    total = 0
     
-    total = sum(item.product.price for item in cart_items)
+    if request.user.is_authenticated:
+        order = Order.objects.filter(user=request.user, is_ordered=False).first()
+        
+        if not order:
+            order = Order.objects.create(user=request.user, is_ordered=False)
+        
+        cart_items = order.items.all()
+        total = sum(item.product.price for item in cart_items)
 
     return render(request, 'myapp/index.html', {
         'categories': categories,
