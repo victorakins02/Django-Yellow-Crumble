@@ -132,9 +132,14 @@ def newsletter(request):
         name = request.POST.get('name', '') 
         email = request.POST.get('email')
     
+        if NewsletterSubscription.objects.filter(email=email).exists():
+            return render(request, 'myapp/newsletter.html', {
+                'error': 'This email is already subscribed!',
+                'name': name 
+            })
         NewsletterSubscription.objects.create(name=name, email=email)
-        
         print(f"New newsletter subscription: {email}")
+        
         return redirect('home')
         
     return render(request, 'myapp/newsletter.html')
