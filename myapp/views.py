@@ -13,7 +13,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 from myapp.forms import ContactForm, ReviewForm
-from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review, UserProfile, News
+from .models import Career, Category, ContactMessage, MenuItem, NewsletterSubscription, Order, OrderItem, Review, UserProfile, News, CartItem
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login, logout as a_logout
 from .models import UserProfile
@@ -203,3 +203,39 @@ def profile_view(request):
 def about(request):
     news_items = News.objects.all().order_by('-date_posted')
     return render(request, 'myapp/about.html', {'news_items': news_items})
+
+def submit_order(request):
+    if not request.user.is_authenticated:
+        return redirect('login') 
+
+    if request.method == "POST":
+        name = request.POST.get('full_name')
+        addr = request.POST.get('address')
+        phone = request.POST.get('phone')
+        
+        order = Order.objects.filter(user=request.user, is_ordered=False).first()
+        
+        if not order or not order.items.exists():
+            return redirect('index')
+
+        cart_items = order.items.all()
+        total = sum(item.product.price for item in cart_items)
+        summary = ", ".join([item.product.name for item in cart_items])
+
+        order.full_name = name
+        order.address = addr
+        order.phone_number = phone
+        order.total_amount = total
+        order.items_summary = summary
+        order.is_ordered = True  
+        order.save()
+
+        categories = Category.objects.all()
+        return render(request, 'myapp/index.html', {
+            'categories': categories,
+            'order_success': True,
+            'cart_items': [],
+            'total': 0
+        })
+    
+    return redirect('index')
