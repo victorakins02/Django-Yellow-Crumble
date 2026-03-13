@@ -94,6 +94,7 @@ def contact(request):
 def review(request):
     if request.method == 'POST':
         Review.objects.create(
+            user=request.user if request.user.is_authenticated else None,
             customer_name=request.POST.get('customer_name'),
             rating=request.POST.get('rating'),
             comment=request.POST.get('comment')
@@ -106,6 +107,9 @@ def review(request):
 def edit_review(request, review_id):
     review = Review.objects.get(id=review_id)
 
+    if not (request.user == review.user or request.user.is_staff):
+        return redirect('review')
+
     if request.method == 'POST':
         review.customer_name = request.POST.get('customer_name')
         review.rating = request.POST.get('rating')
@@ -117,14 +121,12 @@ def edit_review(request, review_id):
     return render(request, 'myapp/edit_review.html', {'review': review})
 
 def delete_review(request, review_id):
-    if request.method == 'POST':
-        try:
-            review = Review.objects.get(id=review_id)
+    review = get_object_or_404(Review, id=review_id)
+    
+    if request.user == review.user or request.user.is_staff:
+        if request.method == 'POST':
             review.delete()
-            print(f"Review {review_id} deleted successfully!")
-        except Review.DoesNotExist:
-            print(f"Review {review_id} was not found, skipping delete.")
-            
+    
     return redirect('review')
 
 def newsletter(request):

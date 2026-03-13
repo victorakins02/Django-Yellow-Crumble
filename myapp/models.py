@@ -30,6 +30,7 @@ class Career(models.Model):
         return self.title
     
 class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     customer_name = models.CharField(max_length=100)
     rating = models.IntegerField() # 1 to 5
     comment = models.TextField()
@@ -96,7 +97,7 @@ class News(models.Model):
     def __cl__ (self):
         return self.title
     
-class CartItem(models.Model):  # Make sure this name matches your import!
+class CartItem(models.Model):  
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)

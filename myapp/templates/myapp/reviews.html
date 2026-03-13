@@ -48,16 +48,20 @@
                     <p style="margin: 10px 0; color: #555;">"{{ review.comment }}"</p>
                     
                     <div style="margin-top: 20px; display: flex; gap: 10px;">
-                        <a href="{% url 'edit_review' review.id %}" class="secondary-btn" style="padding: 5px 10px; font-size: 0.8rem;">Edit</a>
-                        
-                        <form method="POST" action="{% url 'delete_review' review.id %}" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="add-to-cart-button" 
-                                    style="background: #ff4444; border: none; padding: 5px 10px; font-size: 0.8rem; width: auto;"
-                                    onclick="return confirm('Delete this review?')">
-                                Delete
-                            </button>
-                        </form>
+    
+                        {% if user == review.user or user.is_staff %}
+                            <a href="{% url 'edit_review' review.id %}" class="secondary-btn" style="padding: 5px 10px; font-size: 0.8rem;">Edit</a>
+                            
+                            <form method="POST" action="{% url 'delete_review' review.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="add-to-cart-button" 
+                                        style="background: #ff4444; border: none; padding: 5px 10px; font-size: 0.8rem; width: auto;"
+                                        onclick="return confirm('Delete this review?')">
+                                    Delete
+                                </button>
+                            </form>
+                        {% endif %}
+
                     </div>
                 </article>
                 {% empty %}
