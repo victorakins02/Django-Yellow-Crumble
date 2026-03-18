@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# Category model to group menu items
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
+# MenuItem model to represent each item on the menu
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -18,7 +19,8 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+# Career model to represent job openings
 class Career(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -28,7 +30,8 @@ class Career(models.Model):
     job_emoji = models.CharField(max_length=10)
     def __str__(self):
         return self.title
-    
+
+# Review model to represent customer reviews 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     customer_name = models.CharField(max_length=100)
@@ -38,6 +41,7 @@ class Review(models.Model):
     def __str__(self):
         return f"{self.customer_name} - {self.rating} stars"
 
+# ContactMessage model to represent messages sent through the contact form
 class ContactMessage(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -48,7 +52,8 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.first_name} - {self.subject}"
-    
+
+# NewsletterSubscription model to represent newsletter subscribers
 class NewsletterSubscription(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(unique=True)
@@ -56,7 +61,8 @@ class NewsletterSubscription(models.Model):
 
     def __str__(self):
         return self.email
-    
+
+# Order and OrderItem models to represent customer orders and their items
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100, null=True, blank=True)
@@ -70,7 +76,7 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id} by {self.user.username}"
 
-
+# OrderItem model to represent each item in an order
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
@@ -78,7 +84,8 @@ class OrderItem(models.Model):
 
     def total_price(self):
         return self.product.price * self.quantity
-        
+
+# UserProfile model to represent additional user information
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
     
@@ -90,14 +97,16 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
+# News model to represent news items for the about page
 class News(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
 
-    def __cl__ (self):
+    def __str__(self):
         return self.title
-    
+
+# CartItem model to represent items in the user's cart 
 class CartItem(models.Model):  
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
