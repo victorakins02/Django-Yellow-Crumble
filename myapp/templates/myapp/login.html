@@ -18,7 +18,8 @@
 
     <h2>Welcome back</h2>
     <p class="login-sub">Enter your details below to log in to your account.</p>
-
+    
+    <!-- Login Form -->
     <form action="{% url 'login' %}" method="post">
       {% csrf_token %} {% if form.errors %}
         <p style="color: #d9534f; font-size: 0.9rem; margin-bottom: 15px;">

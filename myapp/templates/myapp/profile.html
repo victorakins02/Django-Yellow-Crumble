@@ -8,11 +8,12 @@
 
     <form method="POST">
         {% csrf_token %}
-        
+        <!-- Profile Form Fields -->
         {% for field in form %}
             <div style="margin-bottom: 1.5rem;">
                 <label style="display: block; font-weight: bold; margin-bottom: 0.5rem;">{{ field.label }}</label>
                 {{ field }}
+                <!-- If field has errors, display them -->
                 {% if field.errors %}
                     <p style="color: red; font-size: 0.8rem;">{{ field.errors.0 }}</p>
                 {% endif %}

@@ -27,15 +27,18 @@
           <li class="nav-item"><a href="{% url 'contact' %}">Contact</a></li>
           <!-- <li class="nav-item"><a href="{% url 'login' %}">Log in</a></li> -->
 
+          <!-- If the user is logged in, show profile option -->
           {% if user.is_authenticated %}
             <li class="nav-item"><a href="{% url 'profile' %}">My Profile</a></li>
 
+            <!-- Admin Dashboard link for staff members -->
             {% if user.is_staff %}
                 <li class="nav-item">
                     <a href="/admin/" style="color: #d4a017;">Admin Dashboard</a>
                 </li>
             {% endif %}
 
+            <!-- Greeting if the user is logged in -->
             <li class="nav-item">Hello, {{ user.username }}</li>
             
             <li class="nav-item">

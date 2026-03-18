@@ -74,6 +74,7 @@
       <!-- Reuses .grid-wrap and .grid-item from style.css -->
       <div class="featured-grid">
         <div class="grid-wrap">
+          <!-- Featured Items -->
           {% for item in items %}
             <!-- Item 1 -->
             <article class="grid-item">
@@ -107,6 +108,7 @@
 
       <div class="featured-grid">
         <div class="grid-wrap">
+          <!-- Review Items -->
           {% for review in reviews %}
           <article class="grid-item" style="padding: 20px; border: 1px solid #eee; border-radius: 12px;">
             <div class="item-type">Rating: {{ review.rating }}/5 ⭐</div>

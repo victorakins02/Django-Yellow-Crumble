@@ -41,6 +41,7 @@
         <h2 class="section-title">Customer Feedback</h2>
         <div class="featured-grid">
             <div class="grid-wrap">
+                <!-- Show Reviews -->
                 {% for review in reviews %}
                 <article class="grid-item" style="padding: 20px; background: white; border-radius: 12px; position: relative;">
                     <div class="item-type">Rating: {{ review.rating }}/5 ⭐</div>
@@ -48,7 +49,7 @@
                     <p style="margin: 10px 0; color: #555;">"{{ review.comment }}"</p>
                     
                     <div style="margin-top: 20px; display: flex; gap: 10px;">
-    
+                        <!-- If the current user is the owner of the review or is a staff member, show edit/delete options -->
                         {% if user == review.user or user.is_staff %}
                             <a href="{% url 'edit_review' review.id %}" class="secondary-btn" style="padding: 5px 10px; font-size: 0.8rem;">Edit</a>
                             

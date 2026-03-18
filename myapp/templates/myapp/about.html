@@ -47,6 +47,7 @@
     <section class="section news-section">
       <h2 class="section-title">Latest News</h2>
       
+      <!-- Show admin controls for adding news if the user is staff -->
       {% if user.is_staff %}
         <div class="admin-controls">
             <a href="/admin/myapp/news/add/" class="secondary-btn" style="background: #28a745; color: white;">+ Add News (Staff Only)</a>
@@ -54,12 +55,14 @@
       {% endif %}
 
       <div class="news-grid">
+        <!-- Display news items -->
         {% for item in news_items %}
           <div class="news-card">
             <h3>{{ item.title }}</h3>
             <p class="date">{{ item.date_posted|date:"F j, Y" }}</p>
             <p>{{ item.content }}</p>
             
+            <!-- Admin controls for editing/removing news -->
             {% if user.is_staff %}
               <a href="/admin/myapp/news/{{ item.id }}/change/" style="color: red; font-size: 0.8rem;">Remove/Edit</a>
             {% endif %}
