@@ -4,9 +4,6 @@ from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import timezone
 
-
-# NEW
-
 from django.shortcuts import render , HttpResponse
 from django.db import transaction
 from .models import UserProfile
